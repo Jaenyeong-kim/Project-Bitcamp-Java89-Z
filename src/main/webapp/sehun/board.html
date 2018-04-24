@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<style>
+  #page {
+    background-color: mediumseagreen;
+    width: 960px;
+    padding: 20px;
+    margin: 0px auto;
+  }
+  #header {
+    display: inline-block;
+  }
+  #menu {
+    float: left;
+    margin-right: 600px;
+  }
+  #prof {
+    float: right;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+</style>
+</head>
+<body>
+<div id="page">
+  <div id="header">
+    <div id="menu">
+      <img src="menu_icon.png" style="width:30px; height:30px;"><b> SCHEDULE MAKER</b>
+    </div>
+    <div id="prof" style="margin-bottom: 30px;">
+      <img src="profile.png" style="width:30px; height:30px;"><b> testuser</b>
+      <div class="dropdown">
+        <img src="triangle.png" style="width:15px; height:15px;">
+        <div class="dropdown-content">
+          <p>나의 모임</p>
+          <p>나의 프로필</p>
+          <p>로그아웃</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="side" style="background-color: lightgray; float: left; border: 1px solid red; width: 200px; height: 600px; margin-top: 20px;">
+
+  </div>
+  <div id="map" style="width: 500px; height:400px;"></div>
+</div>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=1e639bb7fa6251699898a62a13e3add8"></script>
+<script>
+  var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+  var options = { //지도를 생성할 때 필요한 기본 옵션
+    center: new daum.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+    level: 3 //지도의 레벨(확대, 축소 정도)
+  };
+  var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="z.dao.PlaceListDao">
+
+	<resultMap type="PlaceList" id="placelist-map">
+		<id column="ltnum"			   property="locationNo" />
+		<result column="mnum"   	 property="memberNo" />
+		<result column="mtnum" 	 	 property="meetingNo" />
+		<result column="count"     property="count" />
+		<result column="lname"		 property="place" />
+		<result column="addr"  	   property="address" />
+		<result column="addr_x"    property="xLocation" />
+		<result column="addr_y"    property="yLocation" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="PlaceList" 
+          useGeneratedKeys="true" keyColumn="ltnum" keyProperty="locationNo">
+    insert into list(lname, addr, mnum, mtnum, addr_x, addr_y)
+    values(#{place}, #{address}, #{memberNo}, #{meetingNo}, #{xLocation}, #{yLocation})
+  </insert>
+  
+  <!-- 
+  <select id="getList" resultMap="placelist-map">
+    select
+      ltnum,
+      mnum,
+      mtnum,
+      lname,
+      addr,
+      addr_x,
+      addr_y 
+    from list
+  </select>
+  -->
+  
+  <select id="getList" parameterType="int" resultMap="placelist-map">
+	  select distinct 
+		  (ltnum), 
+		  (mnum), 
+		  (mtnum),  
+		  (lname),
+		  (addr), 
+		  (addr_x), 
+		  (addr_y), 
+		  (select count(mnum) from loc o where o.ltnum = l.ltnum) as count
+	  from list l
+	    where mtnum=#{value}
+	    order by count desc;
+  </select>
+  
+  <!-- 페이징 처리 후
+    <select id="getList" resultMap="placelist-map" parameterType="map">
+    select
+      ltnum,
+      mnum,
+      mtnum,
+      lname,
+      addr,
+      addr_x,
+      addr_y 
+    from list
+      order by ltnum
+      limit #{startRowIndex}, #{rowSize}
+  </select>
+   -->
+  
+  <select id="count" parameterType="map" resultType="int">
+    select count(*) from list where lname=#{param1} and addr=#{param2} and mtnum=#{param3}
+  </select>
+  
+    <select id="countAll" resultType="int">
+    select 
+      count(*)
+    from list
+      ltnum
+  </select>
+  
+  <delete id="unvote" parameterType="map">
+    delete from loc
+      where 
+    mnum=#{memberNo} and ltnum=#{locationNo} and mtnum=#{meetingNo} 
+  </delete>
+</mapper>

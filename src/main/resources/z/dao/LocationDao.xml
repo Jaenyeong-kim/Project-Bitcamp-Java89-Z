@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="z.dao.LocationDao">
+
+<resultMap type="Location"            id="Location-map">
+  <id     column="lnum"               property="locationListNo"/>
+  <result column="ltnum"              property="locationNo"/>
+  <result column="mnum"               property="memberNo"/>
+  <result column="mtnum"              property="meetingNo"/>
+</resultMap>
+
+  <insert id="insert" parameterType="Location" 
+          useGeneratedKeys="true" keyColumn="lnum" keyProperty="locationListNo">
+    insert into loc(ltnum, mnum, mtnum)
+    values(LAST_INSERT_ID(), #{memberNo}, #{meetingNo})
+  </insert>
+  
+  <insert id="insertvote" parameterType="Location" 
+          useGeneratedKeys="true" keyColumn="lnum" keyProperty="locationListNo">
+    insert into loc(ltnum, mnum, mtnum)
+    values(#{locationNo}, #{memberNo}, #{meetingNo})
+  </insert>
+  
+  <select id="count" parameterType="map" resultType="int">
+    select count(*) from loc where ltnum=#{param1} and mnum=#{param2} and mtnum=#{param3}
+  </select>
+  
+  <select id='getmemberList' resultType="map">
+    select 
+      o.ltnum,
+	    name,
+	    o.mnum, 
+	    photo,
+	    lname
+	  from 
+      memb m, loc o, list l
+    where
+      m.mnum = o.mnum and l.ltnum = o.ltnum;
+  </select>
+
+  <select id="getCheckLoc" parameterType="int" resultType="int">
+    select count(*) from loc where mnum=#{param1} and mtnum=#{param2};
+  </select>
+
+</mapper>

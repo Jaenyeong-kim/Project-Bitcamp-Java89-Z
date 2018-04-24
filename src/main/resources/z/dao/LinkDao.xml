@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="z.dao.LinkDao">
+
+  <resultMap type="link" id="link-map">
+    <id     column="mnum"      property="memberNo"/>
+    <result column="mtnum"     property="meetingNo"/>
+    <result column="boss"      property="boss"/>
+    <result column="stat"      property="status"/>
+    <result column="accept"    property="acceptMeet"/>
+  </resultMap>
+
+  <select id="getBoss" parameterType="int" resultMap="link-map">
+    select link.mnum from link left outer join memb on memb.mnum=link.mnum where mtnum=(select mtnum from link where mnum=#{value}) and link.boss="y";
+  </select>
+
+  <select id="getVotedCount" parameterType="int" resultType="int">
+    select count(*) from link where mtnum=#{value} and stat="y";
+  </select>
+
+  <select id="getEntireCount" parameterType="int" resultType="int">
+    select count(*) from link where mtnum=#{value};
+  </select>
+
+  <select id="getMyUnvoteCount" parameterType="int" resultType="int">
+    select count(*) from link left outer join meet on link.mtnum=meet.mtnum where mnum=#{value} and stat="n" and mstat="ing" and accept="y";
+  </select>
+  
+  <select id="getMyInviteCount" parameterType="int" resultType="int">
+    select count(*) from link where mnum=#{value} and accept="n";
+  </select>
+  
+  <update id="updateStat" parameterType="int" >
+    update link set stat="y" where mnum=#{param1} and mtnum=#{param2};
+  </update>
+  
+  <delete id="refuse" parameterType='int'>
+    delete from link
+    where mnum=#{param1} and mtnum=#{param2};
+  </delete>
+  
+   <update id="accept" parameterType="link">
+	   update link set
+	   accept="y"
+	   where mnum=#{param1} and mtnum=#{param2}
+  </update>
+  
+  <!-- 멤버 초대시 Link 테이블 데이터 삽입 -->
+  <insert id="linkInsert">
+    insert into link (mnum, mtnum, boss, stat, accept)
+    values(#{linkMembNo}, #{meetingNo}, 'n', 'n', 'n')
+  </insert>
+
+  <select id="isMeeting" parameterType="int" resultType="int">
+    select mtnum from link where mnum=#{value} and accept="y";
+  </select>
+
+</mapper>

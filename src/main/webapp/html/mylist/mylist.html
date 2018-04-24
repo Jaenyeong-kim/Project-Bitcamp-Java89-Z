@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>내 모임</title>
+<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixSGo+B:400" />
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../css/mylist/reset.css"/>
+<link rel="stylesheet" href="../../css/mylist/layout.css"/>
+<link rel="stylesheet" href="../../css/mylist/mylist.css"/>
+<link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+<div id="header"></div>
+
+<div id="content">
+  <div class="view_my_meeting">
+    <h2 class="tit">내 모임</h2>
+    <button type="button" class="btn btn-primary">모임생성</button>
+    <h4>정렬방법</h4>
+    <select name="sort">
+      <option value="recent">최신순</option>
+      <option value="ing">투표진행중</option>
+      <option value="wait">확정대기중</option>
+      <option value="fin">일정확정</option>
+    </select>
+    <ul class="meeting_list">
+    </ul>
+  </div>
+</div>
+
+<div id="footer"></div>
+
+<script id="meeting_card" type="text/x-handlebars-template">
+{{#each listMeetingCards}}
+<li class="item {{meetStat}}" data-meeting-no={{meetingNo}} data-meetstat={{meetStat}}>
+  <a href="#">
+    <div class="meeting_image" style="background: url('../upload/{{photo}}') no-repeat 50% 50%; background-size: cover; border-radius: 20px 20px 0px 0px;">
+      <span class="meeting_owner"></span>
+    </div>
+    <div class="meeting_info {{meetStat}}" style="border-radius: 0px 0px 20px 20px; height: 150px;">
+      <p class="tit" style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align:center;">{{title}}</p>
+      <ul class="meeting_info_list">
+        <li class="item date">
+          <span class="tit">날짜 : </span>
+          <span class="info">{{date}}</span>
+        </li>
+        <li class="item time" style="padding-top: 5px;">
+          <span class="tit">시간 : </span>
+          <span class="info">{{time}}</span>
+        </li>
+        <li class="item location" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-top: 5px; padding-bottom: 5px;">
+          <span class="tit">장소 : </span>
+          <span class="info">{{location}}</span>
+        </li>
+      </ul>
+      <div class="participation_member_info"></div>
+    </div>
+    <div class="meeting_status ing">
+      <div class="info"></div>
+    </div>
+  </a>
+</li>
+{{/each}}
+</script>
+
+<script src="../../js/context.js"></script>
+<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../js/mylist/mylist.js"></script>
+<script src="../../js/common.js"></script>
+
+<script>
+</script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+@CHARSET "UTF-8";
+
+/* 풋터에서 사용하는 css import */
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+/* 헤더 css 시작 */
+#header {
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	font-family: "RixSGo B";
+}
+
+#header .inner_header {
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	*zoom: 1;
+}
+
+#header .inner_header:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#header .logo img {
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#header .svc_name {
+	float: left;
+	margin-top: 9px;
+	font-size: 25px;
+}
+
+#header .svc_name a {
+	text-decoration: none;
+	color: black;
+}
+
+#header #join {
+	float: right;
+	margin-top: 15px;
+	margin-left: 20px;
+	/*display: none;*/
+}
+
+#header #join a {
+	text-decoration: none;
+	color: black;
+}
+
+#header #login {
+	float: right;
+	margin-top: 15px;
+	/*display: none;*/
+}
+
+#header #login a {
+	text-decoration: none;
+	color: black;
+}
+
+#header #logout {
+	float: right;
+	margin-top: 9px;
+}
+
+#header #logout .profile_photo {
+	width: 30px;
+	height: 30px;
+	/*background: url("../image/user_profile.jpg") no-repeat 50% 50%;*/
+	background: no-repeat 50% 50%;
+	background-size: cover;
+	border-radius: 50%;
+	float: right;
+}
+
+#header #logout a {
+	text-decoration: none;
+	color: black;
+	float: right;
+	margin-top: 7px;
+	margin-left: 5px;
+}
+
+sec-intext {
+	font-family: "Noto Sans KR", sans-serif;
+	@import
+	url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+}
+
+#sec2 {
+	font-color: #9E9E9E;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: "Noto Sans KR", sans-serif;
+	@import
+	url( "http://fonts.googleapis.com/earlyaccess/notosanskr.css" );
+}
+
+#sec3 {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 0;
+}
+
+#sec4 {
+	font-weight: 500;
+}
+
+.Pstyle {
+ opacity: 0;
+ display: none;
+ position: relative;
+ width: auto;
+ border: 5px solid #fff;
+ padding: 20px;
+ background-color: #fff;
+}
+
+.b-close {
+ position: absolute;
+ right: 5px;
+ top: 5px;
+ padding: 5px;
+ display: inline-block;
+ cursor: pointer;
+}
+/* 헤더 css 끝 */
+
+/* 풋터 css 시작 - 2017.02.08 김재녕*/
+#div-header {
+	width: 100%;
+}
+
+#footer {
+	clear: left;
+	text-align: center;
+	background-color: #ECECEC;
+}
+
+/*사이트*/
+.site {
+	width: 960px;
+	text-align: center;
+	display: inline-block;
+}
+
+/*
+.logo {
+  background-image: ../../image/newlogo.png;
+  float: left;
+  width: 50px;
+}
+*/
+.site img {
+	float: left;
+	width: 35px;
+	height: 35px;
+	margin-top: 11px;
+}
+
+.sns {
+	float: right;
+	margin-top: 5px;
+}
+
+/*페이스북*/
+.facebook:before {
+	font-family: "FontAwesome";
+	content: "\f09a";
+	color: #b4b4b4;
+}
+
+.facebook:hover {
+	text-decoration: none;
+}
+
+.facebook:hover:before {
+	text-decoration: none;
+	color: #337AB7;
+}
+
+.facebook {
+	font-size: 32px;
+	text-decoration: none;
+}
+
+/*구글*/
+.google:before {
+	font-family: "FontAwesome";
+	content: "\f1a0";
+	color: #b4b4b4;
+}
+
+.google:hover {
+	text-decoration: none;
+}
+
+.google:hover:before {
+	text-decoration: none;
+	color: #EA4335;
+}
+
+.google {
+	font-size: 32px;
+	text-decoration: none;
+	margin-left: 5px;
+}
+/* 풋터 css 끝 */

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>header</title>
+<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../heuikyeong/css/common.css">
+<link rel="stylesheet" href="../../css/footer.css">
+<link rel="stylesheet" type="text/css" href="../../woojong/test/popup/popup.css" />
+<link rel="stylesheet" type="text/css" href="../../woojong/test/login/login.css" />
+<style>
+  #header {
+    width:100%;
+    border-bottom: 1px solid #ddd;
+  }
+  #header .inner_header {
+    width: 960px;
+    margin: 0 auto;
+    *zoom: 1;
+  }
+  #header .inner_header:after {
+    content: '';
+    display: block;
+    clear: both;
+    
+  }
+  #header .logo img{
+    width:40px;
+    height:40px;
+    float:left;
+    margin-bottom:5px;
+  }
+  #header .svc_name {
+    float:left;
+    margin-top:6px;
+    font-size:25px;
+  }
+  #header .svc_name a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #join {
+    float:right;
+    margin-top:10px;
+    margin-left:20px;
+  }
+  #header #join a {
+    text-decoration:none;
+    color:black;
+  }
+  #header #login {
+    float:right;
+    margin-top:10px;
+  }
+  #header #login a {
+    text-decoration:none;
+    color:black;
+  }
+</style>
+</head>
+<body>
+<div id="header">
+  <div class="inner_header">
+    <a href="#" class="logo">
+      <img src="../img/header/logo.png" alt="Schedule Maker"></img>
+    </a>
+    <div class="svc_name">
+      <a href="#"><b>SCHEDULE MAKER</b></a>
+    </div>
+    <div id="join">
+      <a href="#" class="openMask">회원가입</a>
+    </div>
+    <div id="login">
+      <a href="#" class="openMaskt">로그인</a>
+    </div>
+  </div>
+</div>
+
+<div id="content">
+
+
+    <span style="padding-top:500px; padding-left:850px; font-size: 50px"></span><br>
+    <span style="padding-top:550px; padding-left:150px; font-size: 30px; text-shadow:2px 2px 2px gray; font-family: Noto Sans KR;font-weight: bold">Make your meeting schedule!</span>
+     
+    <img src='../../heuikyeong/image/시계아이콘_분홍.jpg'  height='30' style='padding-bottom:10px; padding-left:1px'>
+  <span style=" padding-left:150px;  font-size: 38px; text-shadow:3px 3px 3px gray; font-weight: bold">When.Where.Who</span><br>
+    <img src='../../heuikyeong/image/시계아이콘.jpg'  height='15' style=' margin-left:150px;'>
+    <span style=" font-size: 10px">언제 어디서 만날지 고민인 당신을 도와드립니다.</span><br>
+    <span style=" padding-left:150px; font-size: 8px">ScheduleMacker로 편안하고 즐겁게 모임스케쥴을 계획해보세요.</span><br>
+
+
+    <form class="form-inline" >
+      <div class="form-group" style="width:860px; padding-left:150px; margin-right:5px; padding-top:10px ">
+        <input type="email"  class="form-control"  id="exampleInputEmail3" style=' height: 25px;width:150px;margin:0px;font-size:9px 'placeholder="모임주제를 입력해주세요">
+        <a id='new-btn' href='#' class="btn btn-primary btn-sm" style="border-color:#3db394;  height:23px; width:100px; font-size:9px; background-color:#3db394 ">create schedule</a><BR>
+     <span style=" padding-left:1px; font-size: 9px; color: gray">Your team already uses SceduleMaker? Sign in </span><br>
+    <img src='../../heuikyeong/image/배경2.jpg'  height='130' style=' padding-left:550px'>
+  </div>
+    </form>
+
+</div>
+
+<div id="footer">
+  <div class='site'>
+  <a class='logo' href='main.html'><img class='logo' src='../../image/newlogo.png'></a>
+  <span class='sns'>
+    <a class='facebook' href='http://www.facebook.com'></a>
+    <a class='google' href='http://www.google.com'></a>
+  </span>  
+  </div>
+</div>
+
+<div id="mask"></div>
+
+  <div class="windowt">
+    <div class="form">
+      <div style='background-color:#009AFF; width:100%; height:50px;'>
+          <img src='../image/close.png' width=30; height=30; class='close2' style='float:right; margin-top:9px;'>
+          </div>
+      <div class="form-toggle"></div>
+      <div class="form-panel one">
+        <div class="form-header">
+          <h1>로그인</h1>
+        </div>
+        <div class="form-content">
+          <form>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class="form">
+    <div style='background-color:#009AFF; width:100%; height:50px;'>
+          <img src='../image/close.png' width=30; height=30; class='close' style='float:right; margin-top:9px;'>
+          </div>
+      <div class="form-toggle"></div>
+      <div class="form-panel one">
+        <div class="form-header">
+          <h1>회원가입</h1>
+        </div>
+        <div class="form-content">
+          <form>
+            <div class="form-group">
+              <label for="email">이메일 주소</label> <input type="email" id="email"
+                name="email" required="required" />
+            </div>
+            <div class="form-group">
+              <label for="password">비밀번호</label> <input type="password"
+                id="password" name="password" required="required" />
+            </div>
+            <div class="form-group">
+            <button type="button" style='width: 400px; background-color:#55ACEE;'>
+            <font size=3 color='white'>트위터로 가입하기</font></button>
+            </div>
+            <div class="form-group">
+            <button type="button" style='width: 400px; background-color:red;'>
+            <font size=3 color='white'>구글로 가입하기</font></button>
+            </div>
+            <div class="form-group">
+            <button type="button" style='width: 400px; background-color:#3B5998;'>
+            <font size=3 color='white'>페이스북으로 가입하기</font></button>
+            </div>
+            <div class="form-group">
+            <button type="button" style='width: 400px; background-color:yellow;'>
+            <font size=3 color='black'>카카오톡으로 가입하기</font></button>
+            </div>
+            <div class="form-group">
+              <a href='./mainslidemenu-login.html'><button type="button"
+                  style='width: 400px;'>회원가입</button></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="../../node_modules/jquery/dist/jquery.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="../../woojong/test/menu/js/main.js"></script> <!-- Resource jQuery -->
+<script src="../../woojong/test/popup/popup.js"> </script>
+</body>
+</html>

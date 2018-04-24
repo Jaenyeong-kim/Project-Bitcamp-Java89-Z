@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="z.dao.BoardDao">
+
+  <resultMap type="board" id="board-map">
+    <id     column="bnum"       property="boardNo"/>
+    <result column="titl"       property="title"/>
+    <result column="cont"      property="content"/>
+    <result column="mnum"      property="memberNo"/>
+    <result column="mtnum"      property="meetNo"/>
+    <result column="bdate"       property="boardDate"/>
+    <collection property="addFileList" ofType="addFile">
+      <id     column="fnum"     property="fileNo"/>
+      <result column="bnum"     property="boardNo"/>
+      <result column="link"     property="filePath"/>
+      <result column="type"     property="fileDesc"/>
+    </collection>
+
+  </resultMap>
+  
+  <select id="count" parameterType="String" resultType="int">
+    select count(*)
+    from board titl
+      inner join board b on mr.mrno=m.mno
+    where m.email=#{value}
+  </select>
+
+  <select id="getBoardNo" parameterType="int" resultType="int">
+    select count(*)
+    from board b 
+    where b.bnum=#{value}
+  </select>
+
+  <insert id="insertlink"  parameterType="board" >
+    insert into file(bnum, link, type) 
+    values
+    <foreach collection="addFileList" item="addFile" separator=",">
+      (#{boardNo}, #{addFile.filePath},'picture')
+    </foreach>
+  </insert>
+  
+  <select id="getList" parameterType="int" resultMap="board-map">
+    select 
+      b.bdate,
+      b.bnum, 
+      b.mnum,
+      b.mtnum,
+      b.titl, 
+      b.cont,
+      m.name,
+      f.link
+    from board b
+      inner join memb m on b.mnum=m.mnum
+      left outer join file f on f.bnum=b.bnum
+    where mtnum=#{vlaue}
+  </select>
+  
+
+  
+  <select id="getOne" parameterType="int" resultMap="board-map">
+    select 
+      b.bdate,
+      b.bnum, 
+      b.mnum,
+      b.mtnum,
+      b.titl, 
+      b.cont,
+      m.name,
+      f.link
+    from board b
+      inner join memb m on b.mnum=m.mnum
+      left outer join file f on f.bnum=b.bnum
+    where b.bnum=#{vlaue} 
+  </select>
+  
+  <insert id="insert" parameterType="board" useGeneratedKeys="true" keyColumn="bnum" keyProperty="boardNo">
+    insert into board(mnum, mtnum, titl, cont, bdate) 
+    values(#{memberNo},#{meetNo}, #{title}, #{content}, now())
+  </insert> 
+
+  <update id="update" parameterType="board">
+    update board set
+      titl=#{title}, 
+      cont=#{content}
+    where bnum=#{boardNo}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from board where bnum=#{value}
+  </delete>
+  
+  <delete id="delete2" parameterType="int">
+    delete from file where bnum=#{value}
+  </delete>
+</mapper>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>모임확정대기상세</title>
+  <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixSGo+B:400" />
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="../../css/detail/reset.css">
+  <link rel="stylesheet" href="../../css/detail/layout.css">
+  <link rel="stylesheet" href="../../css/detail/detail_meeting_ready.css">
+  <link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
+</head>
+<body>
+  <div id="header"></div>
+  
+  <div id="content">
+    <div id="meeting_ready">
+      <h1 class="tit"></h1>
+      <div class="meeting_info">
+        <p class="date"></p>
+        <p class="member">
+          <span class="tit">투표인원</span>
+          <span class="count"><span id="voted"></span>/<span id="entire"></span></span>
+        </p>
+      </div>
+  
+      <div class="section member_wrap">
+        <p class="tit">참여멤버</p>
+        <div class="member_list_wrap">
+          <ul class="member_list">
+          </ul>
+        </div>
+        <button id="btn_toggle_member_list">모임멤버전체보기</button>
+      </div>
+  
+      <div class="section date_result">
+        <p class="tit">일정투표결과</p>
+        <ul class="result_list date_result_list">
+        </ul>
+      </div>
+  
+      <div class="section place_result">
+        <p class="tit">장소투표결과</p>
+        <ul class="result_list place_result_list">
+        </ul>
+      </div>
+      <div class="btn_ready">
+        <button id="btn_ok" type="submit" class="btn btn-primary btn-lg">확정</button>
+        <button id="btn_back" type="button" class="btn btn-success btn-lg">뒤로</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="footer"></div>
+
+  <script id="infoTemplate" type="text/x-handlebars-template">
+    {{title}}
+  </script>
+  <script id="contentTemplate" type="text/x-handlebars-template">
+    {{content}}
+  </script>
+  <script id="bossTemplate" type="text/x-handlebars-template">
+    {{#each listMeetingMembBoss}}
+    <li class="item">
+      <span class="ico"></span>
+      <div class="profile">
+        <img src="../upload/{{photo}}" alt=""/>
+      </div>
+      <p class="name">{{name}}</p>
+    </li>
+    {{/each}}
+  </script>
+  <script id="notbossTemplate" type="text/x-handlebars-template">
+    {{#each listMeetingMembNotBoss}}
+    <li class="item">
+      <div class="profile">
+        <img src="../upload/{{photo}}" alt=""/>
+      </div>
+      <p class="name">{{name}}</p>
+    </li>
+    {{/each}}
+  </script>
+  <script id="dateTemplate" type="text/x-handlebars-template">
+    {{#each dateDuplication}}
+    <li class="item">
+      <span class="info1">{{calendarDate}}</span>
+      <span class="info2">{{calendarTime}}</span>
+    </li>
+    {{/each}}
+  </script>
+  <script id="locationListTemplate" type="text/x-handlebars-template">
+    {{#each locationListDuplication}}
+    <li class="item">
+      <span class="info1">{{locationListName}}</span>
+      <span class="info2">{{locationListAddress}}</span>
+    </li>
+    {{/each}}
+  </script>
+
+  <script src="../../js/context.js"></script>
+  <script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+  <script src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/detail/detail_meeting_ready.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- 모임 생성시 설정화면 -->
+<!-- 수정: 2017.02.22 김재녕 -->
+<!-- 내용: UI 수정 및 기능 구현 -->
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>모임방설정</title>
+<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixSGo+B:400" />
+<link rel="stylesheet"
+	href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../../node_modules/sweetalert/dist/sweetalert.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet"
+	href="../../node_modules/blueimp-file-upload/css/jquery.fileupload.css">
+<link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/main/write2.css">
+<body>
+
+	<div id="header"></div>
+
+	<div id="content">
+
+		<!-- 모임정보설정 -->
+		<div id="scheduleinfo" class="main-div">
+			<span class="section"></span><br> <span class="title">모임정보설정</span><br>
+
+			<div class="play-name">
+				<h6 class="ss-title">모임명</h6>
+				<input type="text" id="play-title" placeholder="모임명을 입력하세요.">
+			</div>
+
+			<!-- 모임분류, 투표마감 설정 -->
+			<div class="separate">
+				<div class="s-1">
+					<h6 class="ss-title">모임분류</h6>
+					<select id="meeting-desc" class="form-control">
+						<option value="">-- 선택 --</option>
+						<option value="스터디">스터디</option>
+						<option value="친목">친목</option>
+						<option value="회식">회식</option>
+						<option value="동창회">동창회</option>
+						<option value="기타">기타</option>
+					</select>
+				</div>
+
+				<div class="s-2">
+					<h6 class="ss-title">투표종료일</h6>
+					<input id="limit-date" class="flatpickr" type="text"
+						placeholder="Select Date..">
+				</div>
+			</div>
+
+			<!-- 모임일정 선택가능 기간 설정(제한 날짜 선택) -->
+			<div class="date-choice">
+				<h6 class="ss-title">모임일정 선택가능 기간</h6>
+				<input id="possible-date" class="flatpickr" type="text"
+					placeholder="Select Date..">
+			</div>
+
+			<!-- 내용(모임 상세설명) -->
+			<div class="schedule-desc">
+				<h6 class="ss-title">모임 상세 설명</h6>
+				<textarea id="meeting-content" class="form-control-area" rows="3"
+					placeholder="내용을 입력해주세요"></textarea>
+			</div>
+
+			<!-- 사진(모임 이미지) -->
+			<div class="photo-add">
+				<h6 class="ss-title">사진</h6>
+				<div class="file-box">
+					
+					<div class="btn btn-info fileinput-button">
+						<i class="glyphicon glyphicon-plus"></i> <span>이미지 업로드</span> <input
+							id='photo' class='form-control fileinput-button' type='file'
+							name='files'>
+							<img id='photo-img'>
+					</div>
+					<input id='photo-path' type='hidden'>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="main-div">
+			<button type="button" id="Go-btn" class="btn btn-primary" style="margin-left: 10px; height: 530px; width: 100px; font-size: 20px;">Go!</button>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+
+	<script src="../../js/context.js"></script>
+	<script src="../../node_modules/handlebars/dist/handlebars.js"></script>
+	<script src="../../node_modules/jquery/dist/jquery.js"></script>
+	<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="../../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://unpkg.com/flatpickr"></script>
+
+	<!-- 모임 이미지 업로드 -->
+	<script
+		src="../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+	<script src="../../node_modules/blueimp-load-image/js/load-image.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-meta.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-exif.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-exif-map.js"></script>
+	<script
+		src="../../node_modules/blueimp-load-image/js/load-image-orientation.js"></script>
+	<script
+		src="../../node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+	<script
+		src="../../node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+
+	<script src="../../js/common.js"></script>
+	<script src="../../js/main/write2.js"></script>
+
+ 	<script>
+		flatpickr("#possible-date", {
+			"minDate" : "today",
+			"mode" : "range"
+		});
+		flatpickr("#limit-date", {
+			"minDate" : "today"
+		});
+	</script>
+
+</body>
+</html>
