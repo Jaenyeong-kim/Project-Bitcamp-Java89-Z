@@ -2,16 +2,20 @@
 ## 남은사항
 ### 2017.03.27
 
-언어 : Java, HTML5, CSS, JavaScript
+OS: Mac Or Windows
 
-DBMS : MySql
+언어: Java, HTML5, CSS, JavaScript
 
-frameWork & library: Spring, jQuery, Bootstrap, log4j
+DBMS: MySql
+
+Tool: Intellij, Eclipse
+
+Build: Gradle
+
+FrameWork & Library: Spring, jQuery, Bootstrap, log4j
 
 API: FaceBook API, Daum Map API
 
 Server: Tomcat
 
-그 외 기술 및 모듈: ajax, json, HandleBars, JDBC, MyBatis, 
-                    Git, npm, gradle, datePicker, swiper, 
-                    exerd, jQuery-validation
+Etc: ajax, json, HandleBars, MyBatis, NodeJS(npm), datePicker, swiper, exerd, jQuery-validation
